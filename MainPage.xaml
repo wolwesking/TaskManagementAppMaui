@@ -15,14 +15,14 @@
         
         
 
-        <Grid Grid.Column="1" RowDefinitions=".90*, .10*" ColumnDefinitions=".90*, .10*">
+        <Grid Grid.Column="1" RowDefinitions=".99*, .1*" ColumnDefinitions=".90*, .10*">
             <ScrollView Grid.Row="0" Margin="20" Grid.ColumnSpan="2">
                 <ListView x:Name="todoListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <HorizontalStackLayout>
-                                    <CheckBox CheckedChanged="onRemoveButtonClicked"/>
+                                    <CheckBox CheckedChanged="OnRemoveButtonClicked"/>
                                     <Label Text="{Binding Name}" FontSize="Large"/>
                                 </HorizontalStackLayout>
                                 
@@ -31,8 +31,8 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-            <Entry x:Name="todoListEntry" Placeholder="Add task" Grid.Row="1" Grid.Column="0" />
-            <Button Text="Add task" Grid.Row="1" Grid.Column="1" Clicked="onAddButtonClicked"/>
+            <Entry x:Name="todoListEntry" Placeholder="Add task" Grid.Row="1" Grid.Column="0" Completed="OnAddButtonClicked"/>
+            <Button Text="Add task" Grid.Row="1" Grid.Column="1" Clicked="OnAddButtonClicked"/>
         </Grid>
         
     </Grid>

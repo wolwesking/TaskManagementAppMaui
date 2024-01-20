@@ -6,12 +6,12 @@ public partial class MainPage : ContentPage
 {
 
     // Attributes
-    private ObservableCollection<Todo> tasks;
+    private readonly ObservableCollection<Todo> tasks;
 
     public MainPage()
     {
         InitializeComponent();
-        tasks = new ObservableCollection<Todo>();
+        tasks = [];
 
         todoListView.ItemsSource = tasks;
     }
@@ -19,19 +19,19 @@ public partial class MainPage : ContentPage
     
 
     // Button handler
-    private void onAddButtonClicked(object sender, EventArgs e)
+    private void OnAddButtonClicked(object sender, EventArgs e)
     {
-        addTaskToList();
-        
+        AddTaskToList();
+        todoListEntry.Text = string.Empty;
     }
 
-    private void onRemoveButtonClicked(object sender, EventArgs e)
+    private void OnRemoveButtonClicked(object sender, EventArgs e)
     {
-        removeTaskFromList(sender);
+        RemoveTaskFromList(sender);
     }
 
     // ListFunctions
-    private void addTaskToList()
+    private void AddTaskToList()
     {
         string taskName = todoListEntry.Text;
 
@@ -43,7 +43,7 @@ public partial class MainPage : ContentPage
 
     }
 
-    private void removeTaskFromList(object sender)
+    private void RemoveTaskFromList(object sender)
     {
         var checkBox = (CheckBox)sender;
         if (checkBox.BindingContext is Todo taskToRemove && checkBox.IsChecked)
@@ -55,5 +55,5 @@ public partial class MainPage : ContentPage
 }
 public class Todo
 {
-    public string Name { get; set; }
+    public required string Name { get; set; }
 }
